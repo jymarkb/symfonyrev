@@ -1,4 +1,14 @@
 services:
+  database:
+    image: mysql:8.2 # or mysql:8.2
+    container_name: db_symrev
+    ports:
+      - "3306:3306"
+    volumes:
+      - dev_mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=$DATABASE_PASSWORD
+
   php:
     build:
       context: ./
@@ -11,9 +21,12 @@ services:
   nginx:
     image: nginx:stable-alpine
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf
       - .:/www
     ports:
       - "80:80"
     depends_on:
       - php
+
+volumes:
+  dev_mysql_data:

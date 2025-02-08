@@ -15,7 +15,9 @@ RUN set -eux \
     && mkdir -p var/cache var/log \
     && composer dump-autoload --classmap-authoritative
 
-FROM php:8.2-fpm-alpine AS php-build
+FROM php:8.2-fpm AS php-build
+
+RUN docker-php-ext-install pdo pdo_mysql
 
 WORKDIR /www
 ADD ./ /www
