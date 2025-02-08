@@ -1,0 +1,18 @@
+services:
+  php:
+    build:
+      context: .
+    volumes:
+      - .:/www
+    ports:
+      - "0:9000"
+
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - .:/www
+    ports:
+      - "80:80"
+    depends_on:
+      - php
