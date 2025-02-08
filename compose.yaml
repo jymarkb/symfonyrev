@@ -1,7 +1,8 @@
 services:
   php:
     build:
-      context: .
+      context: ./
+      dockerfile: ./docker/Dockerfile
     volumes:
       - .:/www
     ports:
