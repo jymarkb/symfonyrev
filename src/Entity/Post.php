@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post
@@ -11,15 +12,19 @@ class Post
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['post:read', 'category:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['post:read', 'category:read'])]
     private ?string $title = null;
+
     #[ORM\Column(length: 255)]
+    #[Groups(['post:read', 'category:read'])]
     private ?string $imgSrc = null;
 
-    
-    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy:"post")]
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy:"post",  fetch: 'EAGER')]
+    #[Groups(['post:read'])]
     private Category $category;
 
     public function getId(): ?int

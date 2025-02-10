@@ -26,6 +26,6 @@ services:
     App\Services\FileUploader:
         arguments:
             $uploadsDir: '%kernel.project_dir%/public/uploads'
-
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    
+    App\Twig\Extension\CustomTwigExtension:
+        tags: ['twig.extension']

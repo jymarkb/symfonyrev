@@ -28,6 +28,17 @@ class PostRepository extends ServiceEntityRepository
         return $builder->getQuery()->getResult();
     }
 
+    public function findPostByCategoryId(int $id){
+        
+        $builder = $this->createQueryBuilder('post');
+        $builder->select('post')
+                ->where('post.category = :id')
+                ->setParameter('id', $id);
+        
+        return $builder->getQuery()->getResult();
+
+    }
+
     //    /**
     //     * @return Post[] Returns an array of Post objects
     //     */
