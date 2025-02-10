@@ -1,19 +1,14 @@
 # symfonyrev
 symfony 7 review
 
-#how to run the application
-`composer docker`
+how to run the application `composer docker`
 
-##start clean image/data
-`docker-compose down -v`
+start clean image/data `docker-compose down -v`
 
-#use `command.sh` for docker container
+## use `command.sh` for docker container
 
-##create database
-`./command.sh doctrine:database:create`
+create database: `./command.sh doctrine:database:create`
 
-##update database scheme:
-`./command make:migration`
+update database scheme: `./command make:migration`
 
-##populate database with sample data
-`./command.sh doctrine:migration:migrate`
+populate database with sample data: `./command.sh doctrine:migration:migrate`
