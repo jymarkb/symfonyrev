@@ -7,4 +7,8 @@
 /public/bundles/
 /var/
 /vendor/
+
 ###< symfony/framework-bundle ###
+
+# added for testing purpose only
+/public/uploads/
