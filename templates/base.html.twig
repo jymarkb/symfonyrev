@@ -16,18 +16,42 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href={{path('home')}}>Logo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href={{path('hello', {name:'macky'})}}>Hello</a>
-                </li>
-            </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href={{path('hello', {name:'macky'})}}>Hello</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href={{path('post.index')}}>Post</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="float-end">
+                <ul class="navbar-nav">
+                
+                    {% if app.user %}
+                        <li class="nav-item">
+                            <p>Hello {{ app.user.userIdentifier }}</p>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href={{path('app_logout')}}>Logout</a>
+                        </li>
+
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href={{path('login')}}>Login</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href={{path('register')}}>Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </nav>
+    <div class="container m-5">
         {% block body %}{% endblock %}
+    </div>
+        
     </body>
 </html>

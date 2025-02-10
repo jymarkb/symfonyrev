@@ -4,8 +4,11 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    uploads_dir: '%kernel.project_dir%/public/uploads'
 
 services:
+   
+
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -19,6 +22,10 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+
+    App\Services\FileUploader:
+        arguments:
+            $uploadsDir: '%kernel.project_dir%/public/uploads'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

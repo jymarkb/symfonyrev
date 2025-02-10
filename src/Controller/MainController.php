@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 final class MainController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index()
+    public function index(): Response
     {
         return $this->render('home/index.html.twig');
     //     return $this->json([
@@ -22,7 +21,8 @@ final class MainController extends AbstractController
     }
 
     #[Route('/hello/{name?}', name: 'hello')]
-    public function helloUser(Request $request) {
+    public function helloUser(Request $request): Response
+    {
         $name = $request->get('name') ;
         // return new Response('<h1> Hello ' .  $name .'!</h1>' );
         return $this->render('home/hello.html.twig',

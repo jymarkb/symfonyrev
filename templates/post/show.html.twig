@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+{# {{ dump('post')}} #}
+
+<h1> Reading {{ post.post_title }}</h1>
+<p> <b>Category:</b> {{ post.category_name }}</p>
+<img src="{{ '/uploads/' ~ post.post_img }}" alt="" width="400">
+{% endblock %}

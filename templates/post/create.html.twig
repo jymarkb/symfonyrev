@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}Create New Post{% endblock %}
+
+{% block body %}
+
+<div class="container m-5">
+
+    {% for message in app.flashes('success.post') %}
+
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+
+    {% endfor %}
+
+    {{ form(form) }}
+</div>
+
+
+
+{% endblock %}
